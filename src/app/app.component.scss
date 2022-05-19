@@ -1,0 +1,64 @@
+.infected {
+  background-color: rgb(255, 188, 188);
+}
+
+.safe {
+  background-color: rgb(188, 255, 204);
+}
+
+.vaccinated {
+  background-color: rgb(188, 229, 255);
+}
+
+.cell {
+  width: 1.1em;
+  height: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer
+}
+
+.superInfected {
+  // border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+
+.infections {
+  color: rgb(155, 155, 155)
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  .example {
+    border: 2px solid black;
+    width: 5em;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
+    .tile {
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      span:first-child {
+        font-size: 2em;
+      }
+    }
+  }
+  .status{
+    width: 5em;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+}
