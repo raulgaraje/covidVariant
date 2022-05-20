@@ -133,5 +133,4 @@ export class AppComponent {
     }
   }
 
-  public async xd() {}
 }
