@@ -44,7 +44,7 @@ export class AppComponent {
         } as Person;
       });
     });
-    this.checkAll()
+    this.checkAll();
   }
 
   public checkAll() {
@@ -95,25 +95,43 @@ export class AppComponent {
   clickInfection(x: number, y: number, person: Person) {
     this.resetStatus(true);
     person.status = person.value === 9 ? 'vaccinated' : 'infected';
-    this.startInfection(x, y, person);
+    this.startInfection(x, y, person, true);
   }
 
-  public startInfection(x: number, y: number, person: Person) {
+  /**
+   *
+   * @param x fila
+   * @param y columna
+   * @param person objeto persona originalmente infectada
+   * @param delay delay?
+   *
+   * Para ver el delay 1 por 1 en vez de en bloque cada iteración, añadir
+   * un await en cada una de las llamadas recursivas
+   */
+  public async startInfection(
+    x: number,
+    y: number,
+    person: Person,
+    delay = false
+  ) {
+    if (delay) await new Promise((f) => setTimeout(f, 500));
     if (this.infect(x + 1, y, this.people[x][y].value)) {
       person.infections++;
-      this.startInfection(x + 1, y, person);
+      this.startInfection(x + 1, y, person, delay);
     }
     if (this.infect(x - 1, y, this.people[x][y].value)) {
       person.infections++;
-      this.startInfection(x - 1, y, person);
+      this.startInfection(x - 1, y, person, delay);
     }
     if (this.infect(x, y + 1, this.people[x][y].value)) {
       person.infections++;
-      this.startInfection(x, y + 1, person);
+      this.startInfection(x, y + 1, person, delay);
     }
     if (this.infect(x, y - 1, this.people[x][y].value)) {
       person.infections++;
-      this.startInfection(x, y - 1, person);
+      this.startInfection(x, y - 1, person, delay);
     }
   }
+
+  public async xd() {}
 }
